@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import Expenses from "./component/Expenses/Expenses";
+import NewExpenses from "./component/NewExpenses/NewExpense";
 
 const App = () => {
   const deleteHandler = (amount) => {
@@ -35,6 +36,7 @@ const App = () => {
   return (
     <div>
       <h2>Let's get started!</h2>
+      <NewExpenses />
       <Expenses items={data} deleteHandler={deleteHandler} />
     </div>
   );
