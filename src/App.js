@@ -32,11 +32,16 @@ const App = () => {
       date: new Date(2021, 5, 12),
     },
   ];
+
+  const addExpenseHandker = expense =>{
+    console.log('In App.js');
+    console.log(expense);
+  };
   const [data, setData] = useState(expenses);
   return (
     <div>
       <h2>Let's get started!</h2>
-      <NewExpenses />
+      <NewExpenses onAddExpense={addExpenseHandker} />
       <Expenses items={data} deleteHandler={deleteHandler} />
     </div>
   );
