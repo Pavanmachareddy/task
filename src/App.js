@@ -3,15 +3,15 @@ import React, { useState } from "react";
 import Expenses from "./component/Expenses/Expenses";
 import NewExpenses from "./component/NewExpenses/NewExpense";
 
-const App = () => {
-  const deleteHandler = (amount) => {
-    console.log(amount);
-    expenses = data.filter((item) => item.amount !== amount);
-    setData(expenses);
-    console.log(expenses);
-  };
+// const App = () => {
+//   const deleteHandler = (amount) => {
+//     console.log(amount);
+//     expenses = data.filter((item) => item.amount !== amount);
+//     setData(expenses);
+//     console.log(expenses);
+//   };
 
-  let expenses = [
+  const DUMMY_EXPENSES = [
     {
       id: "e1",
       title: "Toilet Paper",
@@ -32,18 +32,24 @@ const App = () => {
       date: new Date(2021, 5, 12),
     },
   ];
-
+  const App = () =>{
+    const [expenses,setExpenses]=useState(DUMMY_EXPENSES);
+  
+ 
   const addExpenseHandker = expense =>{
-    console.log('In App.js');
-    console.log(expense);
+    // console.log('In App.js');
+    // console.log(expense);
+    setExpenses((prevExpenses) =>{
+      return [expense,...prevExpenses];
+    })
   };
-  const [data, setData] = useState(expenses);
+  // const [data, setData] = useState(expenses);
   return (
     <div>
       <h2>Let's get started!</h2>
       <NewExpenses onAddExpense={addExpenseHandker} />
-      <Expenses items={data} deleteHandler={deleteHandler} />
+      <Expenses items={expenses} />
     </div>
   );
-};
+  };
 export default App;
